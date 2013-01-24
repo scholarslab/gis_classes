@@ -58,6 +58,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rb-fsevent (0.9.3)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -104,6 +105,7 @@ DEPENDENCIES
   guard-bundler
   guard-livereload
   guard-rspec
+  rb-fsevent
   rspec
   shotgun
   sinatra

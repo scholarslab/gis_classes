@@ -14,6 +14,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'rb-fsevent', :require => false
 end
 
 group :test do
