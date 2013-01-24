@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'erb'
+require 'titleize'
+
+require_relative 'helpers/init'
 
 configure :development do
   enable :logging, :dump_errors, :raise_erros

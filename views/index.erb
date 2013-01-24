@@ -2,10 +2,9 @@
 
 <h3>Course Directory</h3>
 
-<p>Menu</p>
 <ul>
 <% @menu.each_key do |me| %>
-  <li><a href="courses/<%= me %>"><%= me %></a></li>
+  <li><a href="courses/<%= me %>"><%= title_case(me) %></a></li>
 <% end %>
 </ul>
 
