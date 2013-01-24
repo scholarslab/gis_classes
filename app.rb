@@ -29,12 +29,8 @@ before do
 end
 
 get '/' do
-  @classes = list_directories
   erb :index
 end
 
-def list_directories
-  Dir.glob(settings.course_files + "/**").select{|f| File.directory? f}
-end
 
 
