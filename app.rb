@@ -32,5 +32,11 @@ get '/' do
   erb :index
 end
 
+get '/courses' do
+  erb :index
+end
 
+get '/courses/:course' do
+  erb :course
+end
 

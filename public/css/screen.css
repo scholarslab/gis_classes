@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------------*/
 /* Layout */
 /* line 9, ../../_sass/screen.scss */
-.container {
+#container {
   *zoom: 1;
   max-width: 59em;
   _width: 59em;
@@ -25,7 +25,7 @@
   background-clip: content-box;
 }
 /* line 38, ../../../../.rvm/gems/ruby-1.9.3-p374@gis_classes/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-.container:after {
+#container:after {
   content: "";
   display: table;
   clear: both;
