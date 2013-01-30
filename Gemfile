@@ -10,6 +10,9 @@ group :development do
   gem "shotgun"
   gem "awesome_print"
   gem "susy"
+
+  gem "capistrano"
+
   # guard stuff
   gem 'guard'
   gem 'guard-bundler'
