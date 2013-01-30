@@ -4,3 +4,17 @@
   <li>Parse the course URI and derive the title</li>
   <li>Recurse directory and generate links</li>
 </ol>
+
+<div id="course_files">
+
+  <div class="context">
+    <%= @content %>
+  </div>
+
+  <h2>Course Files</h2>
+  <ul>
+    <% @files.each do |link| %>
+      <li><%= make_link(link) %></li>
+    <% end %>
+  </ul>
+</div>

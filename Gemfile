@@ -1,10 +1,10 @@
-# A sample Gemfile
 source "https://rubygems.org"
 
 gem "sinatra"
 gem "foreman"
 gem "thin"
 gem "titleize"
+gem "redcarpet"
 
 group :development do
   gem "shotgun"
