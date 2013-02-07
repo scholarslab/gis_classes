@@ -19,6 +19,7 @@ configure do
   set :course_files, settings.app_path + '/public/courses'
   set :course_directories, '/courses'
   set :app_name, 'GIS Class Resources'
+  set :file_filter, ''
 end
 
 before do
@@ -31,7 +32,7 @@ before do
 end
 
 def get_files(dir)
-  dir_pattern = settings.course_files + '/' + dir + '/**/*'
+  dir_pattern = settings.course_files + '/' + dir + '/**/*.{pdf,zip}'
 
   Dir.glob(dir_pattern)
 end
