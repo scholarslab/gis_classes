@@ -19,7 +19,6 @@ configure do
   set :course_files, settings.app_path + '/public/courses'
   set :course_directories, '/courses'
   set :app_name, 'GIS Class Resources'
-  set :file_filter, ''
 end
 
 before do
