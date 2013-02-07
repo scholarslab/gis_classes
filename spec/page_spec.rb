@@ -13,16 +13,9 @@ describe 'The GIS Classes App' do
     end
   end
 
-  describe "GET '/about'" do
+  describe "GET '/courses/'" do
     it "should be successful" do
-      get '/about'
-      last_response.should be_ok
-    end
-  end
-
-  describe "GET '/contact'" do
-    it "should be successful" do
-      get '/contact'
+      get '/courses/'
       last_response.should be_ok
     end
   end
