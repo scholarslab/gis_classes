@@ -34,13 +34,13 @@ describe 'The GIS Classes App' do
     end
   end
 
-  describe "GET '/cources/foo'" do
+  describe "GET '/courses/foo'" do
     it "should be successfull" do
       get '/courses/foo'
       last_response.should be_ok
     end
 
-    it "should have 'foo' as the heading" do
+    it "should have 'foo' as 'Foo' heading" do
       get '/courses/foo'
       #last_response.body.should has_content? 'Foo'
     end
