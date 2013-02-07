@@ -18,6 +18,7 @@ configure do
   set :app_path, File.dirname(__FILE__)
   set :course_files, settings.app_path + '/public/courses'
   set :course_directories, '/courses'
+  set :app_name, 'GIS Class Resources'
 end
 
 before do
@@ -35,7 +36,7 @@ def get_files(dir)
   Dir.glob(dir_pattern)
 end
 
-def get_readme(dir)
+def get_html(dir)
   begin
     path = "#{settings.course_files}/#{dir}/index.md"
     content = File.read(path)
@@ -69,8 +70,9 @@ get '/courses' do
 end
 
 get '/courses/:course' do
+  @title = params['course']
   @files = get_files(params['course'])
-  @content = get_readme(params['course'])
+  @content = get_html(params['course'])
   erb :course
 end
 
