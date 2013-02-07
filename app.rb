@@ -25,7 +25,7 @@ before do
   Dir.glob "#{settings.course_files}/**" do |file|
     me, mi = file.split('/')[-1]
     @menu[me] ||= []
-    @menu[me] << mi
+    @menu[me] << mi unless mi == "README.md"
   end
 end
 
