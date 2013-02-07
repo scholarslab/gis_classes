@@ -53,19 +53,15 @@ def get_html(dir)
 
 end
 
+not_found do
+  erb :'404'
+end
+
 get '/' do
   erb :index
 end
 
-get '/about' do
-  erb :about
-end
-
-get '/contact' do
-  erb :contact
-end
-
-get '/courses' do
+get '/courses/?' do
   erb :index
 end
 
