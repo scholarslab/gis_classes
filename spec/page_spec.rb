@@ -2,8 +2,24 @@ require 'spec_helper'
 
 describe 'The GIS Classes App' do
 
-  def app
-    Sinatra::Application
+  describe "Directory structure should exist" do
+
+    #MockFS.mock = true
+    
+    def create_course_directory
+      #app.add "public/courses/test_course"
+    end
+
+    before(:each) do
+      create_course_directory
+      get '/courses/test_course'
+    end
+
+    describe "Get '/courses/test_course'" do
+      it "should be successful" do
+        last_response.should be_ok
+      end
+    end
   end
 
   describe "GET '/'" do
