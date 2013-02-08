@@ -23,6 +23,6 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'capybara'
+  gem 'webrat'
   gem 'rack-test', :require => "rack/test"
 end

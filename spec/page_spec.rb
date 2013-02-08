@@ -42,7 +42,12 @@ describe 'The GIS Classes App' do
 
     it "should have 'foo' as 'Foo' heading" do
       get '/courses/foo'
-      #last_response.body.should has_content? 'Foo'
+      last_response.body.should contain 'Foo'
+    end
+
+    it "should not have 'foo' on the page" do
+      get 'courses/foo'
+      last_response.body.should_not contain 'foo'
     end
   end
 end
