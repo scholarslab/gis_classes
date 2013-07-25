@@ -1,0 +1,400 @@
+* {
+  @include box-sizing(border-box);
+  margin:0;
+  padding:0;
+}
+
+@include establish-baseline;
+
+html {
+  @include background(
+    linear-gradient(left, rgba(darken($base-color, 20%),0.65), rgba(darken($base-color, 20%),0.65)),
+    url('/img/map-charlottesville.jpg')
+  );
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+body {
+  font-family: $default-font;
+  color: $default-color;
+  @include container;
+  position:relative;
+  padding:0;
+}
+
+a {
+  @include link-colors($link-color, $link-hover-color, $link-active-color,
+  $link-visited-color, $link-focus-color);
+}
+
+#{headings()} {
+  a {
+    text-decoration:none;
+  }
+}
+
+h1,h2 {
+  font-weight:normal;
+}
+
+h1 {
+  @include adjust-font-size-to(36px);
+  @include adjust-leading-to(2,36px);
+}
+
+h2 {
+  @include adjust-font-size-to(24px);
+  @include leader(2, 24px);
+}
+
+h3 {
+  @include adjust-font-size-to(20px);
+  color: $default-color-light;
+  font-weight:normal;
+  @include leader(2, 20px);
+  h2 + & {
+    @include leader(1, 20px);
+  }
+}
+
+h4 {
+  @include adjust-font-size-to($base-font-size);
+  @include leader(2);
+  h3 + & {
+    @include leader(1);
+  }
+}
+
+h5 {
+  @include adjust-font-size-to($base-font-size);
+  color: $default-color-light;
+  @include leader(2);
+  h4 + & {
+    @include leader(1);
+  }
+}
+
+h6 {
+  @include adjust-font-size-to($base-font-size);
+  font-style:italic;
+  color: $default-color-light;
+  @include leader(2);
+  h5 + & {
+    @include leader(1);
+  }
+}
+
+#{headings(3,6)} {
+   + p {
+    margin-top:0;
+  }
+}
+
+p {
+  margin: rhythm(1) 0;
+}
+
+blockquote {
+  margin:0;
+  border-left: 3px solid $default-color-lightest;
+  padding-left: rhythm(1);
+  font-style:italic;
+
+  & + figcaption {
+    margin-top:0;
+    text-align:right;
+    @include adjust-font-size-to(14px);
+    @include adjust-leading-to(1, 14px);
+    color: $default-color-light;
+  }
+
+  & :last-child {
+    margin-bottom:0;
+  }
+}
+
+figure {
+  margin: rhythm(2) 0;
+}
+
+dl {
+  margin: rhythm(1) 0;
+
+  dt {
+    font-weight:bold;
+  }
+  dd {
+    margin: 0 0 rhythm(1) rhythm(1);
+  }
+}
+
+ul {
+  list-style:disc;
+}
+
+ol {
+  list-style:decimal;
+}
+
+ul,ol {
+  padding:0;
+  margin: rhythm(1) 0 rhythm(1) rhythm(1);
+
+  nav & {
+    margin-left:0;
+  }
+
+  ul {
+    list-style: circle;
+  }
+
+  ol {
+    list-style: upper-alpha;
+  }
+
+  ul, ol {
+    margin: 0 0 0 rhythm(1);
+
+    ul {
+      list-style:square;
+    }
+
+    ol {
+      list-style:lower-alpha;
+    }
+  }
+}
+
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+th,
+td {
+  padding: rhythm(1) rhythm(0.5) 0;
+  @include trailing-border(1px);
+  border-color: rgba(0,0,0,.2);
+}
+
+th {
+  @include trailing-border(3px);
+  text-align:left;
+}
+
+img {
+  max-width:100%;
+  width:auto;
+  height:auto;
+}
+
+code {
+  font-family: monospace;
+  color: rgba(150,50, 255, 0.75);
+}
+
+del {
+  color: $default-color-lighter;
+}
+
+ins {
+  text-decoration:none;
+  background: rgba(150,50, 255, 0.1);
+}
+
+address {
+  font-style:normal;
+}
+
+hr {
+  border:1px solid $default-color-lightest;
+  height:0;
+}
+
+br {
+  margin:0;
+  line-height:0;
+}
+
+header[role=banner] {
+  @include clearfix;
+  z-index:100;
+  padding: rhythm(1) $grid-padding;
+  border: rhythm(0.25) solid rgba(darken($base-color, 20%), 0.5);
+  border-width: rhythm(0.25) 0;
+
+  @include background-size(cover);
+
+  .styleguide & {
+    display:none;
+  }
+
+  h1 {
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(3,30px);
+  }
+
+  a {
+    color: #fcfcfc;
+    text-decoration:none;
+  }
+
+  nav {
+    background: rgba(0, 200,200, 0.5);
+    ul {
+      margin:0;
+    }
+
+    li {
+      display:inline;
+    }
+  }
+}
+
+div[role=main] {
+  background: rgba(255,255,255,0.9);
+  padding: rhythm(1) $grid-padding;
+  @include clearfix;
+}
+
+#secondary {
+  h2:first-child {
+    margin:0;
+    @include adjust-font-size-to(16px);
+    @include adjust-leading-to(1, 16px);
+    @include leader(1, 16px);
+    font-weight:bold;
+  }
+
+  nav, ul {
+    margin:0;
+  }
+}
+
+footer[role=contentinfo] {
+  border-top: 1px dotted #ccc;
+  @include clearfix;
+
+  p,address {
+    @include adjust-font-size-to(14px);
+    @include adjust-leading-to(0.75, 14px);
+  }
+}
+
+#site-footer {
+  background: rgba(0,0,0,0.5);
+  color: #eee;
+  color: rgba(255,255,255,0.75);
+  padding: rhythm(1) $grid-padding;
+
+  a {
+    @include link-colors(#eee,#eee, #fff, #fff, #fff);
+    @include link-colors(rgba(255,255,255,0.75));
+  }
+}
+
+#global-footer {
+  padding: rhythm(0.5) ;
+  @include clearfix;
+  text-align:left;
+  line-height:rhythm(0);
+  margin-top: rhythm(0);
+
+  img {
+    vertical-align:middle;
+  }
+  a {
+    display:inline-block;
+    text-decoration:none;
+    margin: 0 rhythm(0.5);
+    &:link,
+    &:visited {
+      img {
+        opacity: 0.7;
+      }
+    }
+    &:hover,
+    &:focus {
+      img {
+        opacity: 0.8;
+      }
+    }
+    &:active {
+      img {
+        opacity: 0.9;
+      }
+    }
+
+    &#scholarslab-link {
+    }
+
+    &#uvalibrary-link {
+      float:right;
+    }
+  }
+}
+
+#rotunda {
+  background: rgba(#333, 0.75);
+  padding: 5px;
+  height: rhythm(1);
+  margin:0;
+}
+
+@include at-breakpoint(8) {
+
+  header[role=banner] {
+    border-top:0;
+    padding-top:rhythm(3);
+    h1 {
+      margin-bottom:0;
+      @include adjust-leading-to(2, 30px);
+    }
+  }
+  div[role=main] {
+    @include pad(1,1, 16);
+  }
+  #primary {
+    @include span-columns(9,14);
+  }
+  #secondary {
+    @include span-columns(4 omega, 14);
+  }
+
+  #global-footer {
+    background-color: darken($base-color, 20%);
+    background-color: rgba($default-color, 0.25);
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    padding-left: $grid-padding;
+    padding-right: $grid-padding;
+
+
+    a {
+      margin:0;
+    }
+  }
+}
+
+
+@if $development == true {
+
+   * {
+     background-color: transparent !important;
+   }
+
+    html {
+        @include baseline-grid-background;
+    }
+    body {
+        @include susy-grid-background;
+    }
+
+    #primary, #secondary {
+      background-color: rgba(0,0,0,0.5) !important;
+    }
+}
+

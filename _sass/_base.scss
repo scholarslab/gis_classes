@@ -1,14 +1,77 @@
-// ---------------------------------------------------------------------------
 // Imports
-
+@import "compass";
 @import "susy";
+@import "mixins";
+@import "normalize";
 
-// ---------------------------------------------------------------------------
-// Basic Grid
+// Development
+$development: false;
 
-$total-columns  : 12;
-$column-width   : 4em;
-$gutter-width   : 1em;
-$grid-padding   : $gutter-width;
+// Susy
+$total-columns: 16;
 
-$show-grid-backgrounds  : true;
+// Compass
+$base-font-size: 16px;
+$base-line-height: 28px;
+$grid-background-baseline-color: rgba(0,80,150,0.2); // Background color for Compass's vertical rhythm.
+$grid-background-column-color: rgba(0,80,150,0.05); // Background color for grid columns
+$grid-background-baseline-height: $base-line-height;
+
+// Colors
+@function color-wheel($base-color, $color-rule, $color-direction: 'positive') {
+
+  $degrees: 0;
+
+  @if $color-rule == 'analogous' {
+    $degrees: 30;
+  } @else if $color-rule == 'split-complementary' {
+    $degrees: 150;
+  } @else if $color-rule == 'triad' {
+    $degrees: 120;
+  } @else if $color-rule == 'right-triangle' {
+    $degrees: 90;
+  } @else {
+    $degrees: $color-rule;
+  }
+
+  @if $color-direction == 'negative' {
+    $degrees: -$degrees;
+  }
+
+  $color: $base-color;
+  @if $color-rule == 'complementary' {
+    $color: complement($base-color);
+  } @else {
+    $color: adjust-hue($base-color, $degrees);
+  }
+
+  @return $color;
+}
+
+$base-color                     : rgb(50,200,200);
+$complementary-color: color-wheel($base-color, 'complementary');
+$analogous-positive: color-wheel($base-color, 'analogous');
+$complementary-analogous-positive: color-wheel($analogous-positive, 'complementary');
+
+$triad-positive: color-wheel($base-color, 'triad');
+$triad-negative: color-wheel($base-color, 'triad', 'negative');
+
+$split-complementary-positive: color-wheel($base-color, 'split-complementary');
+$split-complementary-negative: color-wheel($base-color, 'split-complementary', 'negative');
+
+$default-color                  : rgb(75,75,75);
+$default-color-light            : rgba($default-color, 0.75);
+$default-color-lighter          : rgba($default-color, 0.5);
+$default-color-lightest         : rgba($default-color, 0.1);
+
+$link-color                     : $analogous-positive;
+$link-visited-color             : lighten($link-color, 10%);
+$link-hover-color               : $base-color;
+$link-focus-color               : $link-hover-color;
+$link-active-color              : $link-color;
+
+// Fonts
+$default-font: "Noto Serif", serif;
+$alt-font: "Noto Sans", sans-serif;
+$heading-font: $alt-font;
+
