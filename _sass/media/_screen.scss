@@ -11,6 +11,7 @@ html {
     linear-gradient(left, rgba(darken($base-color, 20%),0.65), rgba(darken($base-color, 20%),0.65)),
     url('/img/map-charlottesville.jpg')
   );
+  background-position:top left;
   background-size:cover;
   background-attachment:fixed;
 }
@@ -219,20 +220,14 @@ br {
 
 header[role=banner] {
   @include clearfix;
-  z-index:100;
-  padding: rhythm(1) $grid-padding;
-  border: rhythm(0.25) solid rgba(darken($base-color, 20%), 0.5);
-  border-width: rhythm(0.25) 0;
+  border-bottom: rhythm(0.25) solid rgba(darken($base-color, 20%), 0.5);
 
   @include background-size(cover);
-
-  .styleguide & {
-    display:none;
-  }
+  padding-left: $grid-padding;
+  padding-right: $grid-padding;
 
   h1 {
-    @include adjust-font-size-to(30px);
-    @include adjust-leading-to(3,30px);
+    @include rhythm(0,1,1,0,36px);
   }
 
   a {
@@ -273,29 +268,63 @@ div[role=main] {
 }
 
 footer[role=contentinfo] {
-  border-top: 1px dotted #ccc;
   @include clearfix;
-
-  p,address {
-    @include adjust-font-size-to(14px);
-    @include adjust-leading-to(0.75, 14px);
-  }
-}
-
-#site-footer {
-  background: rgba(0,0,0,0.5);
+  @include adjust-font-size-to(14px);
+  @include adjust-leading-to(0.75, 14px);
+  background: darken($base-color, 20%);
+  background-color: rgba(black, 0.35);
   color: #eee;
   color: rgba(255,255,255,0.75);
-  padding: rhythm(1) $grid-padding;
+
+  .elsewhere {
+    list-style:none;
+    margin:0;
+    text-align:center;
+    li {
+      display:inline;
+    }
+  }
+
+  address {
+    text-align:center;
+    padding: rhythm(0.5, 14px) $grid-padding;
+  }
 
   a {
     @include link-colors(#eee,#eee, #fff, #fff, #fff);
     @include link-colors(rgba(255,255,255,0.75));
+    text-decoration:none;
+  }
+
+  .vcard {
+    span {
+      display:inline-block;
+    }
+
+    .organization-name,
+    .organization-unit,
+    .postal-code,
+    abbr[title=work] {
+      &:after {
+        content: " ·";
+        color: rgba(white, 0.25);
+        text-decoration:none !important;
+      }
+    }
+
+    abbr {
+      border:none;
+      &.type {
+        color: rgba(white, 0.5);
+      }
+    }
   }
 }
 
-#global-footer {
-  padding: rhythm(0.5) ;
+#global-header {
+  background: darken($base-color, 20%);
+  background-color: rgba(black, 0.35);
+  padding: rhythm(0.5);
   @include clearfix;
   text-align:left;
   line-height:rhythm(0);
@@ -303,11 +332,17 @@ footer[role=contentinfo] {
 
   img {
     vertical-align:middle;
+    max-height:100%;
   }
   a {
-    display:inline-block;
+    display:block;
+    text-align:center;
     text-decoration:none;
-    margin: 0 rhythm(0.5);
+    float:left;
+    width: 48%;
+    text-align:left;
+    height: rhythm(0.4);
+
     &:link,
     &:visited {
       img {
@@ -326,57 +361,50 @@ footer[role=contentinfo] {
       }
     }
 
-    &#scholarslab-link {
-    }
-
     &#uvalibrary-link {
       float:right;
+      text-align:right;
     }
-  }
-}
 
-#rotunda {
-  background: rgba(#333, 0.75);
-  padding: 5px;
-  height: rhythm(1);
-  margin:0;
+  }
 }
 
 @include at-breakpoint(8) {
+  header[role=banner],
+  div[role=main] {
+    @include pad(1,1,14);
+  }
+}
+
+@include at-breakpoint(12) {
 
   header[role=banner] {
-    border-top:0;
-    padding-top:rhythm(3);
     h1 {
-      margin-bottom:0;
-      @include adjust-leading-to(2, 30px);
+      @include adjust-font-size-to(48px);
+      @include leader(1,48px);
+      @include trailer(1,48px);
     }
   }
-  div[role=main] {
-    @include pad(1,1, 16);
-  }
+
   #primary {
-    @include span-columns(9,14);
+    @include span-columns(8,12);
   }
   #secondary {
-    @include span-columns(4 omega, 14);
+    @include span-columns(3 omega, 12);
   }
 
-  #global-footer {
-    background-color: darken($base-color, 20%);
-    background-color: rgba($default-color, 0.25);
-    position:absolute;
-    left:0;
-    right:0;
-    top:0;
-    padding-left: $grid-padding;
-    padding-right: $grid-padding;
-
-
+  #global-header {
     a {
-      margin:0;
+      height: auto;
     }
   }
+
+  #rotunda {
+    padding: 4px;
+    background: rgba(black, 0.25);
+    height: rhythm(1);
+  }
+
 }
 
 
