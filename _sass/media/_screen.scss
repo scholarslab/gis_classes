@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'socialicons';
+    src: url('//static.scholarslab.org/fonts/socialicons/socialicons.eot');
+    src: url('//static.scholarslab.org/fonts/socialicons/socialicons.eot?#iefix') format('embedded-opentype'),
+         url('//static.scholarslab.org/fonts/socialicons/socialicons.woff') format('woff'),
+         url('//static.scholarslab.org/fonts/socialicons/socialicons.ttf') format('truetype'),
+         url('//static.scholarslab.org/fonts/socialicons/socialicons.svg#socialicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
   @include box-sizing(border-box);
   margin:0;
@@ -27,6 +38,16 @@ body {
 a {
   @include link-colors($link-color, $link-hover-color, $link-active-color,
   $link-visited-color, $link-focus-color);
+
+  @include single-transition(color);
+
+  &:before {
+    @include single-transition(color);
+  }
+
+  img {
+    @include single-transition(opacity);
+  }
 }
 
 #{headings()} {
@@ -40,8 +61,8 @@ h1,h2 {
 }
 
 h1 {
-  @include adjust-font-size-to(36px);
-  @include adjust-leading-to(2,36px);
+  @include adjust-font-size-to(32px);
+  @include adjust-leading-to(2,32px);
 }
 
 h2 {
@@ -206,11 +227,7 @@ ins {
 
 address {
   font-style:normal;
-}
-
-hr {
-  border:1px solid $default-color-lightest;
-  height:0;
+  margin: rhythm(1) 0;
 }
 
 br {
@@ -218,9 +235,24 @@ br {
   line-height:0;
 }
 
+hr {
+  border:none;
+  &:before {
+    content: " · · · ";
+    color: rgba(white, 0.5);
+  }
+}
+
 header[role=banner] {
   @include clearfix;
   border-bottom: rhythm(0.25) solid rgba(darken($base-color, 20%), 0.5);
+  @include background(
+    linear-gradient(left, rgba(darken($base-color, 20%), 0.75), rgba(darken($base-color, 20%), 0.75)),
+    url('/img/map-charlottesville.jpg')
+  );
+  background-position:top left;
+  background-size:cover;
+  background-attachment:fixed;
 
   @include background-size(cover);
   padding-left: $grid-padding;
@@ -248,6 +280,7 @@ header[role=banner] {
 }
 
 div[role=main] {
+  background: #fff;
   background: rgba(255,255,255,0.9);
   padding: rhythm(1) $grid-padding;
   @include clearfix;
@@ -275,25 +308,37 @@ footer[role=contentinfo] {
   background-color: rgba(black, 0.35);
   color: #eee;
   color: rgba(255,255,255,0.75);
-
+  text-align:center;
+  padding-top: rhythm(1,14px);
   .elsewhere {
     list-style:none;
-    margin:0;
     text-align:center;
+
     li {
       display:inline;
     }
-  }
-
-  address {
-    text-align:center;
-    padding: rhythm(0.5, 14px) $grid-padding;
   }
 
   a {
     @include link-colors(#eee,#eee, #fff, #fff, #fff);
     @include link-colors(rgba(255,255,255,0.75));
     text-decoration:none;
+    &:link,
+    &:visited {
+      &:before {
+        color: #ddd;
+        color: rgba(white, 0.5);
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      &:before {
+        color: #f0f0f0;
+        color: rgba(white, 0.75);
+      }
+    }
   }
 
   .vcard {
@@ -321,28 +366,51 @@ footer[role=contentinfo] {
   }
 }
 
+.elsewhere a {
+  @include squish-text();
+  vertical-align:sub !important;
+}
+
+.elsewhere a:before {
+  font-size: 54px !important;
+  line-height: 54px;
+  font-family: 'socialicons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(black,0.25);
+}
+
+.google:before {
+  content: "\2b";
+}
+.github:before {
+  content: "\67";
+}
+.twitter:before {
+  content: "\74";
+}
+.facebook:before {
+  content: "\66";
+}
+.vimeo:before {
+  content: "\76";
+}
+
+
 #global-header {
   background: darken($base-color, 20%);
   background-color: rgba(black, 0.35);
-  padding: rhythm(0.5);
-  @include clearfix;
-  text-align:left;
-  line-height:rhythm(0);
-  margin-top: rhythm(0);
-
-  img {
-    vertical-align:middle;
-    max-height:100%;
-  }
+  padding: $grid-padding;
+  display:table;
+  width: 100%;
   a {
-    display:block;
-    text-align:center;
     text-decoration:none;
-    float:left;
-    width: 48%;
-    text-align:left;
-    height: rhythm(0.4);
-
+    width:50%;
+    display:table-cell;
     &:link,
     &:visited {
       img {
@@ -360,19 +428,42 @@ footer[role=contentinfo] {
         opacity: 0.9;
       }
     }
-
-    &#uvalibrary-link {
-      float:right;
-      text-align:right;
-    }
-
   }
+
+  img {
+    vertical-align:middle;
+  }
+
 }
 
+#scholarslab-link {
+}
+
+#uvalibrary-link {
+  text-align:right;
+}
+
+#uvalibrary {
+  margin-right: gutter(16);
+}
+
+#rotunda {
+  background: rgba(black, 0.25) !important;
+  padding: 0.5em;
+  width: 3em;
+}
+
+
 @include at-breakpoint(8) {
+
   header[role=banner],
-  div[role=main] {
-    @include pad(1,1,14);
+  div[role=main],
+  #global-header {
+    @include pad(1,1,18);
+  }
+
+  #rotunda {
+    display:inline;
   }
 }
 
@@ -387,26 +478,14 @@ footer[role=contentinfo] {
   }
 
   #primary {
-    @include span-columns(8,12);
+    @include span-columns(10,16);
   }
+
   #secondary {
-    @include span-columns(3 omega, 12);
-  }
-
-  #global-header {
-    a {
-      height: auto;
-    }
-  }
-
-  #rotunda {
-    padding: 4px;
-    background: rgba(black, 0.25);
-    height: rhythm(1);
+    @include span-columns(5 omega, 16);
   }
 
 }
-
 
 @if $development == true {
 
