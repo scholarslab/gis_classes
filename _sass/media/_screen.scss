@@ -404,7 +404,7 @@ footer[role=contentinfo] {
 #global-header {
   background: darken($base-color, 20%);
   background-color: rgba(black, 0.35);
-  padding: $grid-padding;
+  padding: rhythm(0.5) $grid-padding;
   display:table;
   width: 100%;
   a {
@@ -455,7 +455,6 @@ footer[role=contentinfo] {
 
 
 @include at-breakpoint(8) {
-
   header[role=banner],
   div[role=main],
   #global-header {
@@ -488,20 +487,12 @@ footer[role=contentinfo] {
 }
 
 @if $development == true {
-
-   * {
-     background-color: transparent !important;
-   }
-
     html {
         @include baseline-grid-background;
+        background-attachment:scroll;
     }
     body {
         @include susy-grid-background;
-    }
-
-    #primary, #secondary {
-      background-color: rgba(0,0,0,0.5) !important;
     }
 }
 
