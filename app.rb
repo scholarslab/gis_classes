@@ -23,7 +23,9 @@ end
 
 before do
   @menu = {}
-  Dir.glob "#{settings.course_files}/**" do |file|
+  courses = Dir.glob "#{settings.course_files}/**"
+  courses.sort.each do |file|
+  #Dir.glob "#{settings.course_files}/**" do |file|
     me, mi = file.split('/')[-1]
     @menu[me] ||= []
     @menu[me] << mi unless mi == "README.md"
