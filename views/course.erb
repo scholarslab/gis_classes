@@ -1,12 +1,9 @@
 <h1><%= @title %></h1>
 
-
-<div id="course_files">
-
-  <div class="context">
-    <%= @content %>
-  </div>
-
+<div class="context">
+<%= @content %>
+</div>
+<div class="course-files">
   <h2>Course Files</h2>
   <ul>
     <% @files.each do |link| %>

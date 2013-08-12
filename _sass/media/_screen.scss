@@ -254,13 +254,14 @@ header[role=banner] {
   background-size:cover;
   background-attachment:fixed;
 
+  h1 {
+    @include leader(1, 32px);
+    @include trailer(1, 32px);
+  }
+
   @include background-size(cover);
   padding-left: $grid-padding;
   padding-right: $grid-padding;
-
-  h1 {
-    @include rhythm(0,1,1,0,36px);
-  }
 
   a {
     color: #fcfcfc;
@@ -461,29 +462,32 @@ footer[role=contentinfo] {
     @include pad(1,1,18);
   }
 
-  #rotunda {
-    display:inline;
+  div[role=main] {
+    padding-top: rhythm(2);
+    padding-bottom: rhythm(2);
   }
+
+  #courses ul {
+    @include column-count(2);
+    @include column-gap(gutter(18));
+  }
+
 }
 
 @include at-breakpoint(12) {
 
-  header[role=banner] {
-    h1 {
-      @include adjust-font-size-to(48px);
-      @include leader(1,48px);
-      @include trailer(1,48px);
+  #introduction {
+    @include column-count(2);
+    @include column-gap(gutter(18));
+
+    :first-child {
+      margin-top:0;
     }
   }
 
-  #primary {
-    @include span-columns(10,16);
+  #courses ul {
+    @include column-count(4);
   }
-
-  #secondary {
-    @include span-columns(5 omega, 16);
-  }
-
 }
 
 @if $development == true {

@@ -28,15 +28,8 @@
 
   <%= erb :_header %>
 
-
   <div role="main" id="main">
-    <div id="primary">
-      <%= yield %>
-    </div>
-    <div id="secondary">
-    <%#= erb :_events %>
-    <%= erb :_sidebar %>
-    </div>
+    <%= yield %>
   </div>
 
   <%= erb :_footer %> 
