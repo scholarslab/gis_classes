@@ -287,20 +287,6 @@ div[role=main] {
   @include clearfix;
 }
 
-#secondary {
-  h2:first-child {
-    margin:0;
-    @include adjust-font-size-to(16px);
-    @include adjust-leading-to(1, 16px);
-    @include leader(1, 16px);
-    font-weight:bold;
-  }
-
-  nav, ul {
-    margin:0;
-  }
-}
-
 footer[role=contentinfo] {
   @include clearfix;
   @include adjust-font-size-to(14px);
@@ -437,9 +423,6 @@ footer[role=contentinfo] {
 
 }
 
-#scholarslab-link {
-}
-
 #uvalibrary-link {
   text-align:right;
 }
@@ -447,13 +430,6 @@ footer[role=contentinfo] {
 #uvalibrary {
   margin-right: gutter(16);
 }
-
-#rotunda {
-  background: rgba(black, 0.25) !important;
-  padding: 0.5em;
-  width: 3em;
-}
-
 
 @include at-breakpoint(8) {
   header[role=banner],
