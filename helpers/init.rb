@@ -1,5 +1,6 @@
 def title_case(string)
-  string.gsub('_', ' ').titleize
+  #string.gsub('_', ' ').titleize
+  string.gsub('_', ' ')
 end
 
 def make_link(link_string)

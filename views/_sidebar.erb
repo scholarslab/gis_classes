@@ -2,7 +2,7 @@
 <nav>
   <ul class="class-list">
     <% @menu.each_key do |me| %>
-      <li><a href="/courses/<%= me %>"><%= me %></a></li>
+      <li><a href="/courses/<%= me %>"><%= title_case(me) %></a></li>
   <% end %>
   </ul>
 </nav>
