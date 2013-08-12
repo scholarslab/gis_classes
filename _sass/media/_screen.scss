@@ -40,6 +40,7 @@ a {
   $link-visited-color, $link-focus-color);
 
   @include single-transition(color);
+  @include single-transition(background-color);
 
   &:before {
     @include single-transition(color);
@@ -285,6 +286,32 @@ div[role=main] {
   background: rgba(255,255,255,0.9);
   padding: rhythm(1) $grid-padding;
   @include clearfix;
+}
+
+#courses {
+  a {
+    display:block;
+    text-decoration:none;
+    word-wrap: break-word;
+    @include trailing-border(1px, 0.25);
+    @include padding-leader(0.25);
+    padding-left: rhythm(0.25);
+    padding-right: rhythm(0.25);
+    border-color: $default-color-lightest;
+    border-bottom-style:dotted;
+    overflow:auto;
+    min-height:1px;
+
+    &:link,
+    &:visited {
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: lighten($link-hover-color, 40%);
+    }
+  }
 }
 
 footer[role=contentinfo] {
