@@ -288,6 +288,42 @@ div[role=main] {
   @include clearfix;
 }
 
+#introduction {
+  .h-card {
+
+    h2 {
+      @extend h3;
+    }
+
+    p,ul {
+      @include adjust-font-size-to(14px);
+      @include adjust-leading-to(0.9, 14px);
+      @include rhythm(0,0,0,1,14px);
+    }
+
+    ul {
+      list-style:none;
+      margin-left:0;
+      color: $default-color-lighter;
+      li {
+        display:inline;
+
+        & + li:before {
+          content: " · ";
+          color: $default-color-light;
+        }
+      }
+    }
+
+    img {
+      float:right;
+      margin-left: rhythm(0.5);
+      width: rhythm(2.5);
+      height: rhythm(2.5);
+    }
+  }
+}
+
 #courses {
   a {
     display:block;
@@ -470,6 +506,18 @@ footer[role=contentinfo] {
     padding-bottom: rhythm(2);
   }
 
+  #introduction .h-card {
+    @include span-columns(8,16);
+
+    h2 {
+      margin-top:0;
+    }
+
+    &:nth-of-type(even) {
+      @include span-columns(8 omega, 16);
+    }
+  }
+
   #courses ul {
     @include column-count(2);
     @include column-gap(gutter(18));
@@ -480,12 +528,7 @@ footer[role=contentinfo] {
 @include at-breakpoint(12) {
 
   #introduction {
-    @include column-count(2);
-    @include column-gap(gutter(18));
 
-    :first-child {
-      margin-top:0;
-    }
   }
 
   #courses ul {
@@ -494,6 +537,11 @@ footer[role=contentinfo] {
 }
 
 @if $development == true {
+
+    * {
+      background-color: transparent !important;
+    }
+
     html {
         @include baseline-grid-background;
         background-attachment:scroll;
