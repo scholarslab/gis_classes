@@ -32,12 +32,8 @@ namespace :deploy do
     run "chmod -R g+w #{latest_release}" if fetch(:group_writable, true)
   end
 
-  task :remove_rvmrc do
-    run "rm #{current_path}/.rvmrc"
-  end
-
 end
 
 after "deploy:create_symlink", "deploy:add_courses_link"
-after "deploy", "deploy:cleanup", "deploy:remove_rvmrc"
+after "deploy", "deploy:cleanup"
 
