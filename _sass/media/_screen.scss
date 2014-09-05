@@ -290,21 +290,25 @@ div[role=main] {
 
 #introduction {
   .h-card {
-
+    background: #eee;
+    background: rgba(black, .075);
+    padding: rhythm(1);
     h2 {
       @extend h3;
+      margin-top:0;
     }
 
     p,ul {
-      @include adjust-font-size-to(14px);
-      @include adjust-leading-to(0.9, 14px);
-      @include rhythm(0,0,0,1,14px);
+      @include adjust-font-size-to(13px);
+      @include adjust-leading-to(.8, 13px);
+      margin:0;
     }
 
     ul {
       list-style:none;
-      margin-left:0;
       color: $default-color-lighter;
+      margin-bottom: rhythm(1, 14px);
+
       li {
         display:inline;
 
@@ -506,16 +510,30 @@ footer[role=contentinfo] {
     padding-bottom: rhythm(2);
   }
 
-  #introduction .h-card {
-    @include span-columns(8,16);
-
-    h2 {
-      margin-top:0;
+  #introduction {
+    & > p {
+        @include span-columns(8,16);
+        @include adjust-font-size-to(18px);
+        @include adjust-leading-to(1,18px);
     }
 
-    &:nth-of-type(even) {
+    .h-card {
       @include span-columns(8 omega, 16);
+
     }
+
+    &:after {
+        content: " ";
+        display:table;
+        width: 100%;
+        clear:both;
+
+    }
+
+  }
+
+  #courses {
+      clear:both;
   }
 
   #courses ul {
